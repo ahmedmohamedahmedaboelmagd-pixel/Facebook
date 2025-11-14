@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل مستخدم جديد</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; margin: 50px; text-align: right; background-color: #f4f4f4; }
+        .container { background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 400px; margin: auto; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745; /* لون أخضر للنجاح */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background-color: #1e7e34; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>تسجيل مستخدم جديد</h2>
+        <form id="signupForm">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">عنوان البريد الإلكتروني:</label>
+            <input type="email" id="email" required>
+
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">تسجيل / تأكيد البيانات</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // 1. جمع بيانات المستخدم
+            const userData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value 
+            };
+
+            // 2. محاكاة إرسال البيانات إلى الخادم وتخزينها كـ JSON
+            // *يجب أن ترسل هذه البيانات فعليًا إلى الخادم لتكون آمنة ومتوفرة لك في صفحة الإدارة*
+            
+            // هنا، سنخزنها في `localStorage` كقائمة (Array) لمحاكاة قاعدة البيانات.
+            let storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            storedUsers.push(userData);
+            localStorage.setItem('registeredUsers', JSON.stringify(storedUsers));
+            
+            // 3. تحويل العميل إلى صفحة النجاح
+            window.location.href = 'success.html'; 
+        });
+    </script>
+</body>
+</html>
