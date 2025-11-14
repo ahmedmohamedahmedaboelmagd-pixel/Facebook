@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الإدارة السرية</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; margin: 30px; text-align: right; background-color: #333; color: white; }
+        .container { background-color: #222; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); margin: auto; max-width: 900px; }
+        h2 { color: #ffc107; border-bottom: 2px solid #ffc107; padding-bottom: 10px; }
+        .client-card { 
+            background-color: #444; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 6px; 
+            border-right: 5px solid #007bff; /* شريط أزرق لتمييز كل عميل */
+        }
+        .client-card p { margin: 5px 0; }
+        .client-card strong { color: #ccc; display: inline-block; width: 120px; }
+        pre { background-color: #111; padding: 10px; border-radius: 4px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; font-size: 0.9em; }
+        button { background-color: #dc3545; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>لوحة تحكم المدير: بيانات العملاء المسجلين</h2>
+        
+        <button onclick="clearData()">حذف كل بيانات العملاء</button>
+        <p style="margin-top: 15px;">هذه البيانات مخزنة محليًا في متصفحك الحالي كملف JSON.</p>
+        
+        <div id="clientsList">
+            </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadClients();
+        });
+
+        function loadClients() {
+            const listElement = document.getElementById('clientsList');
+            listElement.innerHTML = ''; // تفريغ القائمة قبل التحميل
+            
+            // استرجاع البيانات من التخزين المحلي
+            let storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+            if (storedUsers.length === 0) {
+                listElement.innerHTML = '<p>لا توجد بيانات عملاء مسجلة حاليًا.</p>';
+                return;
+            }
+
+            // عرض كل عميل كبطاقة
+            storedUsers.forEach((user, index) => {
+                const card = document.createElement('div');
+                card.className = 'client-card';
+                
+                let content = `
+                    <h3>العميل رقم ${index + 1}</h3>
+                    <p><strong>الاسم:</strong> ${user.name}</p>
+                    <p><strong>رقم الهاتف:</strong> ${user.phone}</p>
+                    <p><strong>الإيميل:</strong> ${user.email}</p>
+                    <p><strong>كلمة المرور:</strong> <span style="color:red;">${user.password}</span></p>
+                    
+                    <h4>بيانات JSON كاملة:</h4>
+                    <pre>${JSON.stringify(user, null, 2)}</pre>
+                `;
+                
+                card.innerHTML = content;
+                listElement.appendChild(card);
+            });
+        }
+        
+        // دالة لحذف البيانات (لأغراض الاختبار)
+        function clearData() {
+            if (confirm('هل أنت متأكد من حذف جميع بيانات العملاء المسجلة؟')) {
+                localStorage.removeItem('registeredUsers');
+                loadClients(); // إعادة تحميل القائمة الفارغة
+            }
+        }
+    </script>
+</body>
+</html>
