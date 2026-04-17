@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورسير | صرح تعليمي متميز</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --primary: #ffd117; /* الذهبي الفرعوني */
+            --primary-dark: #c4a012;
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-light);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 209, 23, 0.1);
+             border-bottom: #c4a012 Solid 3px;
+                padding-bottom: 5px;
+                border-radius: 10%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 209, 23, 0.3);
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 30px;
+            
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: var(--transition);
+           
+        }
+
+        .nav-bar a:hover {
+            color: var(--primary);
+        }
+
+        .nav-bar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-bar a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), var(--bg)),
+                        url('https://images.unsplash.com/photo-1517245318773-b7b83ca927a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+               border-bottom: #c4a012 dashed 3px;
+            border-radius: 20%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 800;
+         
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            background-color: var(--primary);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 209, 23, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Features Section --- */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: #c4a012 Solid 3px;
+            border-radius: 10%;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: #ffffff;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .stat-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+        }
+        .footer-link {
+             text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            position: relative;
+            transition: var(--transition);
+        }
+.footer-link:hover {
+            color: var(--primary);
+        
+        }
+        .footer-link:hover::after {
+          content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-bar { display: none; } /* إخفاء القائمة الجانبية في الجوال */
+            /* يفضل إضافة قائمة جانبية للجوال لاحقاً */
+            header { padding: 15px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">C O U R <span>SERA</span></div>
+        <nav class="nav-bar">
+            <a href="#">الرئيسية</a>
+            <a href="index.html">الكورسات</a>
+            <a href="#">من نحن</a>
+            <a href="#">اتصل بنا</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>موقع تعليمي متميز</h1>
+        <p>نعمل على تنمية الثقافة والوعي لدى الطالب، لنجمع بين عراقة الاسم وتطور التكنولوجيا لإعداد أجيال تقود المستقبل.</p>
+        <a href="#about" class="btn">اكتشف المزيد</a>
+    </section>
+
+    <section id="about">
+        <h1 class="section-title">لماذا نحن؟</h1>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">خبرتنا تفوق التوقعات</h2>
+            <p>نحن نعمل على الارتقاء بالطلاب ونجعلهم في القمة بدون عناء، فقط من خلال التركيز والمنهجية العلمية الصحيحة التي نوفرها في مراكزنا التدريبية.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-history"></i>
+                <h2>+15</h2>
+                <p>عاماً من الخبرة</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-user-graduate"></i>
+                <h2>+25,000</h2>
+                <p>طالب متميز في سوق العمل</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h2>+1000</h2>
+                <p>عضو في مراكزناالتدريبية</p>
+            </div>
+        </div>
+            <div class="courses-wrapper">
+        <div class="course-card">
+            <div class="badge">جديد</div>
+            <img src="download.png" alt="CSS Course">
+            <div class="info">                <!-- اسم الكورس -->
+                <h3>دورة تصميم المواقع</h3>
+                <p>تعلم كيف تبني واجهات احترافية باستخدام CSS.</p>
+                <div class="price">مجاني</div>
+                <a href="details.html" target="_blank" class="btn">مشاهدة الكورس</a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="download (1).png" alt="HTML Course">
+            <div class="info">
+                <h3>أساسيات الـ HTML</h3>
+                <p>مبادئ اختيارالعناصر في المواقع.</p>
+                <div class="price">مجاني</div>
+                <a href="details2.html" target="_blank" class="btn">مشاهدة الكورس</a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="images.jfif" alt="English Course">
+            <div class="info">
+                <h3>اللغة الإنجليزية</h3>
+                <p>التواصل بفعالية باللغة الإنجليزية.</p>
+                <div class="price">مجاني</div>
+                <a href="details3.html" target="_blank" class="btn">مشاهدة الكورس</a>
+            </div>
+        </div>
+         <div class="course-card">
+            <img src="images.jfif" alt="English Course">
+            <div class="info">
+                <h3>اللغة الإنجليزية</h3>
+                <p>التواصل بفعالية باللغة الإنجليزية.</p>
+                <div class="price">مجاني</div>
+                <a href="details3.html" target="_blank" class="btn">مشاهدة الكورس</a>
+            </div>
+        </div>
+     </div>
+    </section>
+ <footer style="text-align: center; padding: 20px; background-color: var(--card-bg); color: var(--text-muted);">
+    <div class="footer">
+        <div class="footer-links" style="margin-bottom: 15px; color: #fff;
+            font-weight: bold;"padding: 10px;">
+        
+            <a href="#" class="footer-link">الرئيسية</a>
+            <a href="index.html" class="footer-link">الكورسات</a>
+            <a href="#" class="footer-link">من نحن</a>
+            <a href="#" class="footer-link">اتصل بنا</a>
+    </div>
+        &copy; 2024 كورسير. جميع الحقوق محفوظة.
+
+    </footer>
+
+</body>
+</html>

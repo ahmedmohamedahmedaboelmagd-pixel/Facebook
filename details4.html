@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاهدة الدرس - كورس البرمجة</title>
+    <style>
+ :root {
+    --primary-gold: #ffd117;
+    --primary-dark: #c4a012;
+    --bg-dark: #0a0a0a;
+    --sidebar-bg: #161616;
+    --card-bg: #1e1e1e;
+    --text-light: #ffffff;
+    --text-muted: #b0b0b0;
+    --accent-blue: #2563eb; /* للإبقاء على بعض التباين */
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', sans-serif; /* يفضل استخدام خط Cairo */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* تخصيص الـ Scrollbar ليكون متناسقاً مع التصميم الداكن */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gold);
+    border-radius: 10px;
+}
+
+/* رأس الصفحة */
+header {
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+header span {
+    font-weight: bold;
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+}
+
+.back-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    border: 1px solid var(--text-muted);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.back-btn:hover {
+    color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    background: rgba(255, 209, 23, 0.1);
+}
+
+/* الهيكل الرئيسي */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* منطقة الفيديو */
+.video-container {
+    flex: 3;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 209, 23, 0.2);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-info {
+    margin-top: 25px;
+    background: var(--sidebar-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border-right: 5px solid var(--primary-gold);
+}
+
+.video-info h2 {
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+}
+
+.video-info p {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* القائمة الجانبية للدروس */
+.sidebar {
+    flex: 1;
+    background: var(--sidebar-bg);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+    min-width: 320px;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    background: #1f1f1f;
+    font-weight: bold;
+    color: var(--primary-gold);
+    border-bottom: 1px solid rgba(255, 209, 23, 0.2);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lesson-item {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.lesson-item:hover {
+    background-color: rgba(255, 209, 23, 0.05);
+    color: var(--text-light);
+}
+
+.lesson-item.active {
+    background-color: rgba(255, 209, 23, 0.1);
+    color: var(--primary-gold);
+    border-right: 4px solid var(--primary-gold);
+    font-weight: bold;
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        order: 2;
+        min-width: 100%;
+        height: auto;
+    }
+    .video-container {
+        padding: 15px;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <span>اسم الكورس: احتراف CSS</span>
+        <a href="index.html" class="back-btn">← العودة للرئيسية</a>
+    </header>
+
+    <div class="main-wrapper">
+        <main class="video-container">
+            <div class="video-wrapper">
+                        <!-- <a href="https://www.youtube.com/embed/tnuAJ6wTGyU" target="myVideoFrame" class="lesson-link">الدرس الأول: المقدمة</a>
+        <a href="https://www.youtube.com/embed/2dQDvJEpmMk" target="myVideoFrame" class="lesson-link">الدرس الثاني: الحروف</a>
+        <a href="https://www.youtube.com/embed/tnuAJ6wTGyU" target="myVideoFrame" class="lesson-link">الدرس الثالث: القواعد</a>
+    </aside> -->
+
+    <main class="main-content">
+        <h2>شاشة العرض</h2>
+        
+        <iframe name="myVideoFrame" 
+            
+                src="https://www.youtube.com/embed/1XTXv1V3-ag?list=PLoyECfvEFOjZn3kXgpuEqaXge5HoCDvp7" 
+                class="main-content" 
+                frameborder="0" 
+                allowfullscreen>
+        </iframe>
+                <!-- <iframe src="https://www.youtube.com/embed/h1mNPEjva8U?si=v0ub02AZPp8vftyQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+            </div>
+            
+            <div class="video-info">
+                <h2>كورس احتراف CSS</h2>
+                <p>تعلم كيف تبني واجهات احترافية باستخدام CSS.</p>
+            </div>
+             <div class="video-info">
+                <h2>الدرس الأول: مقدمة عن لغات الويب</h2>
+                <p>في هذا الدرس سنتعرف على أساسيات لغات الويب وكيفية استخدامها في بناء المواقع الإلكترونية.</p>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">محتويات الكورس</div>
+            <div class="lesson-list">
+                <a href="#" target="myVideoFrame" class="lesson-item active">1. مقدمة الدورة</a>
+                <a href="https://www.youtube.com/embed/Oq6vMEzTzX4?si=KQpjhpprBMv4UIYG" title="YouTube video player" target="myVideoFrame" class="lesson-item">2.  الدرس الثاني متقدم</a>
+                <a href="https://www.youtube.com/embed/10J9w7T2bOw?si=pWmrEapYVXkC14SU" title="YouTube video player" target="myVideoFrame" class="lesson-item">3. الدرس الثالث </a>
+                <a href="https://www.youtube.com/embed/QAI0yKpCurM?si=R4F94yRjL2l3Arng" title="YouTube video player" target="myVideoFrame" class="lesson-item">4.   الدرس الرابع</a>
+            </div>
+        </aside>
+    <!-- </div><iframe width="1301" height="732" src="https://www.youtube.com/embed/IwWo6yDergA?list=RDpHf5okRM9Mk" title="سوري استكنان - حبك عنواني قلبي يضيعني لو غبت ثواني | يولفي وينك - تعديل مميز" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+
+</body>
+</html>

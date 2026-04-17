@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>استخراج شهادة النجاح المتغيرة</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0a; /* خلفية داكنة لتناسب موقعك */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        /* قسم التحكم */
+        .controls {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ffd117;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        input, select {
+            padding: 12px;
+            margin: 10px 0;
+            width: 90%;
+            border-radius: 8px;
+            border: 1px solid #ffd117;
+            background: #222;
+            color: white;
+            font-size: 16px;
+        }
+
+        .print-btn {
+            background: #ffd117;
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        /* تصميم الشهادة */
+        #certificate {
+            width: 800px;
+            height: 550px;
+            padding: 40px;
+            background: white;
+            color: #333;
+            border: 20px double #ffd117;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 209, 23, 0.2);
+            position: relative;
+        }
+
+        .cert-header { font-size: 45px; color: #c4a012; margin-bottom: 10px; }
+        .student-name { font-size: 35px; font-weight: bold; color: #222; margin: 20px 0; border-bottom: 2px solid #ddd; display: inline-block; padding: 0 20px; }
+        .course-name { font-size: 28px; font-weight: bold; color: #ffd117; background: #000; padding: 5px 15px; border-radius: 5px; }
+
+        /* تنسيق الطباعة */
+        @media print {
+            body { background: white; }
+            .controls { display: none; } /* إخفاء أدوات التحكم عند الطباعة */
+            #certificate { 
+                box-shadow: none; 
+                border: 15px double #ffd117 !important; 
+                margin: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h3>بيانات الشهادة</h3>
+        
+        <input type="text" id="nameInput" placeholder="اكتب اسمك بالكامل" oninput="updateCertificate()">
+        
+        <select id="courseInput" onchange="updateCertificate()">
+            <option value="احتراف لغة HTML">كورس HTML</option>
+            <option value="تنسيق المواقع CSS">كورس CSS</option>
+            <option value="اللغة الإنجليزية">كورس إنجليزي</option>
+            <option value="أساسيات البرمجة">كورس برمجة</option>
+        </select>
+
+        <br>
+        <button class="print-btn" onclick="window.print()">طباعة الشهادة</button>
+    </div>
+
+    <div id="certificate">
+        <div class="cert-header">شهادة إتمام كورس</div>
+        <p style="font-size: 20px;">تشهد منصة AR التعليمية بأن الطالب:</p>
+        
+        <div class="student-name" id="certName">اسم الطالب يظهر هنا</div>
+        
+        <p style="font-size: 20px;">قد أتم بنجاح متطلبات كورس:</p>
+        
+        <div class="course-name" id="certCourse">احتراف لغة HTML</div>
+        
+        <p style="margin-top: 30px;">نتمنى لكم دوام التوفيق والنجاح في مسيرتكم العملية</p>
+        
+        <div style="margin-top: 50px; display: flex; justify-content: space-around; font-weight: bold;">
+            <div>ختم المنصة<br><br> COURSERA </div>
+            <div>توقيع الإدارة<br><br style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> COURSERA </div>
+        </div>
+    </div>
+
+    <script>
+        // دالة التحديث التلقائي للشهادة
+        function updateCertificate() {
+            // تحديث الاسم
+            var name = document.getElementById('nameInput').value;
+            document.getElementById('certName').innerText = name || "اسم الطالب يظهر هنا";
+            
+            // تحديث الكورس
+            var course = document.getElementById('courseInput').value;
+            document.getElementById('certCourse').innerText = course;
+        }
+    </script>
+
+</body>
+</html>

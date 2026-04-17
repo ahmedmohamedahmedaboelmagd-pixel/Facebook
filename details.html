@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاهدة الدرس - كورس البرمجة</title>
+    <style>
+ :root {
+    --primary-gold: #ffd117;
+    --primary-dark: #c4a012;
+    --bg-dark: #0a0a0a;
+    --sidebar-bg: #161616;
+    --card-bg: #1e1e1e;
+    --text-light: #ffffff;
+    --text-muted: #b0b0b0;
+    --accent-blue: #2563eb; /* للإبقاء على بعض التباين */
+}
+
+body {
+    font-family: 'Cairo', 'Segoe UI', sans-serif; /* يفضل استخدام خط Cairo */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* تخصيص الـ Scrollbar ليكون متناسقاً مع التصميم الداكن */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gold);
+    border-radius: 10px;
+}
+
+/* رأس الصفحة */
+header {
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+header span {
+    font-weight: bold;
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+}
+
+.back-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    border: 1px solid var(--text-muted);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.back-btn:hover {
+    color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    background: rgba(255, 209, 23, 0.1);
+}
+
+/* الهيكل الرئيسي */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* منطقة الفيديو */
+.video-container {
+    flex: 3;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 209, 23, 0.2);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-info {
+    margin-top: 25px;
+    background: var(--sidebar-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border-right: 5px solid var(--primary-gold);
+}
+
+.video-info h2 {
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+}
+
+.video-info p {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* القائمة الجانبية للدروس */
+.sidebar {
+    flex: 1;
+    background: var(--sidebar-bg);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+    min-width: 320px;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    background: #1f1f1f;
+    font-weight: bold;
+    color: var(--primary-gold);
+    border-bottom: 1px solid rgba(255, 209, 23, 0.2);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lesson-item {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.lesson-item:hover {
+    background-color: rgba(255, 209, 23, 0.05);
+    color: var(--text-light);
+}
+
+.lesson-item.active {
+    background-color: rgba(255, 209, 23, 0.1);
+    color: var(--primary-gold);
+    border-right: 4px solid var(--primary-gold);
+    font-weight: bold;
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        order: 2;
+        min-width: 100%;
+        height: auto;
+    }
+    .video-container {
+        padding: 15px;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <span>اسم الكورس: احتراف CSS</span>
+        <a href="index.html" class="back-btn">← العودة للرئيسية</a>
+    </header>
+
+    <div class="main-wrapper">
+        <main class="video-container">
+            <div class="video-wrapper" id="1">
+                <iframe src="https://www.youtube.com/embed/h1mNPEjva8U?si=v0ub02AZPp8vftyQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-info">
+                <h2>كورس احتراف CSS</h2>
+                <p>تعلم كيف تبني واجهات احترافية باستخدام CSS.</p>
+            </div>
+             <div class="video-info">
+                <h2 id="2">ما هي لغة CSS؟ </h2>
+                <p>اختصار لـ Cascading Style Sheets (أوراق الأنماط المتتالية). هي اللغة المسؤولة عن "شكل" الموقع؛ فإذا كان 
+                    الـ HTML هو الهيكل العظمي للموقع، فإن CSS هي المظهر، الألوان، الخطوط، وتنسيق العناصر.</p>
+            </div>
+             <div class="video-info">
+                <h2 id="3">لماذا نتعلم CSS؟</h2>
+                <p>
+فصل المحتوى عن التصميم: يمكنك تغيير شكل موقعك بالكامل فقط بتغيير ملف الـ CSS دون لمس كود الـ HTML.
+التحكم في الأجهزة المختلفة: بفضل تقنية الـ Media Queries، تجعل موقعك يعمل ببراية على الموبايل، التابلت، والكمبيوتر (Responsive Design).
+تحسين تجربة المستخدم (UX): من خلال إضافة الحركات (Animations) والتأثيرات التي تجعل التفاعل مع الموقع ممتعاً.
+CSS تتيح لنا إنشاء تصاميم جذابة ومتجاوبة للمواقع الإلكترونية، مما يحسن تجربة المستخدم ويزيد من فعالية الموقع.</p>
+            </div>
+            <div class="video-info">
+                <h2 id="4">التنسيق باستخدام CSS</h2>
+                <p>التنسيق باستخدام CSS هو الفن الذي يحول هيكل الموقع الجامد إلى واجهة حية وجذابة. لفهم كيف يتم التنسيق، يجب أن ننظر إلى CSS كأداة تتحكم في كل بكسل يراه المستخدم.
+
+إليك أهم الركائز التي يقوم عليها التنسيق في CSS:
+
+1. نموذج الصندوق (The Box Model)
+هذا هو المبدأ الأهم في CSS؛ فالمتصفح يرى كل عنصر (سواء كان نصاً، صورة، أو زر) كأنه صندوق مستطيل. يتكون هذا الصندوق من أربع طبقات:
+
+المحتوى (Content): النص أو الصورة نفسها.
+
+الحشوة (Padding): المساحة الفارغة "داخل" الصندوق حول المحتوى.
+
+الحدود (Border): الإطار المحيط بالحشوة والمحتوى.
+
+الهامش (Margin): المساحة الفارغة "خارج" الصندوق التي تفصله عن بقية العناصر.
+
+2. أنظمة تخطيط الصفحة (Layout Systems)
+قديماً كان التنسيق صعباً، لكن الآن لدينا أدوات قوية جداً لترتيب العناصر:
+
+Flexbox: يستخدم لتنسيق العناصر في اتجاه واحد (إما صف أو عمود). هو رائع لتوسط العناصر أو توزيعها بالتساوي داخل القائمة (مثل الـ nav-links في موقعك).
+
+CSS Grid: النظام الأقوى لتصميم صفحات كاملة ثنائية الأبعاد (صفوف وأعمدة معاً). هو الخيار الأمثل لعمل "شبكة الكورسات" التي وضعتها في مشروعك.
+
+3. الألوان والتدرجات (Colors & Gradients)
+CSS تمنحك تحكماً كاملاً في الألوان باستخدام:
+
+الأسماء: مثل gold أو black.
+
+نظام HEX: مثل #ffd117 (الذي استخدمته أنت للذهبي).
+
+التدرجات (Gradients): يمكنك دمج لونين أو أكثر ليظهرا بشكل انسيابي خلف الكروت أو الأزرار لإعطاء لمسة عصرية.
+
+4. التنسيق المتجاوب (Responsive Design)
+بما أن الناس يتصفحون من الموبايل والكمبيوتر، نستخدم ما يسمى Media Queries. وهي عبارة عن "شروط" نخبر بها المتصفح:
+
+"إذا كانت شاشة المستخدم أصغر من 600 بكسل، اجعل حجم الخط أصغر واجعل الكورسات تظهر فوق بعضها بدلاً من بجانب بعضها".
+
+5. الحركات والتفاعلات (Transitions & Animations)
+التنسيق لا يتوقف عند الثبات؛ يمكنك جعل الموقع "يتنفس" عن طريق:
+
+Hover Effects: تغيير لون الزر أو تكبير الكارت قليلاً عندما يمرر المستخدم الماوس فوقه.
+
+Keyframe Animations: تحريك العناصر عند تحميل الصفحة (مثل ظهور اللوجو بشكل تدريجي).
+
+مثال عملي بسيط (كيف يفكر المبرمج عند التنسيق):
+إذا أردت تنسيق "كارت الكورس" في موقعك، الكود سيبدو هكذا منطقياً:
+</p>
+            </div>
+             <div class="video-info">
+                <h2 id="5">اكتب كود CSS</h2>
+                <p><iframe src="https://www.onlinegdb.com/online_c_compiler" 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        marginwidth="0" 
+        marginheight="0" 
+        allowfullscreen>
+</iframe></p>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">محتويات الكورس</div>
+            <div class="lesson-list">
+                <a href="#1" class="lesson-item active">1. مقدمة الدورة</a>
+                <a href="#2" class="lesson-item">2.ما هي لغة CSS؟</a>
+                <a href="#3" class="lesson-item">3. لماذا نتعلم CSS؟</a>
+                <a href="#4" class="lesson-item">4. التنسيق باستخدام CSS</a>
+                <a href="#5" class="lesson-item">5. اكتب كود CSS</a>
+            </div>
+        </aside>
+    </div>
+
+</body>
+</html>
